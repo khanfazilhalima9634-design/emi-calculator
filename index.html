@@ -3,28 +3,25 @@
   <h1 id="title"></h1>
   <p id="intro"></p>
 
-  <script>
-    // Read URL parts
-    const parts = window.location.pathname.split("/").filter(Boolean);
+ <script>
+  const params = new URLSearchParams(window.location.search);
 
-    // Example URL:
-    // /emi-calculator/home-loan/india/
-    const loan = parts[1] || "personal-loan";
-    const country = parts[2] || "usa";
+  const loan = params.get("loan") || "personal-loan";
+  const country = params.get("country") || "usa";
 
-    // Make text readable
-    const loanText = loan.replace(/-/g, " ");
-    const countryText = country.replace(/-/g, " ");
+  const loanText = loan.replace(/-/g, " ");
+  const countryText = country.replace(/-/g, " ");
 
-    // Change page content
-    document.title = loanText + " EMI Calculator in " + countryText;
+  document.title = loanText + " EMI Calculator in " + countryText;
 
-    document.getElementById("title").innerText =
-      loanText + " EMI Calculator in " + countryText;
+  document.getElementById("title").innerText =
+    loanText + " EMI Calculator in " + countryText;
 
-    document.getElementById("intro").innerText =
-      "Use this " + loanText + " EMI calculator to calculate monthly EMI in " +
-      countryText + ".";
-  </script>
+  document.getElementById("intro").innerText =
+    "Use this " + loanText +
+    " EMI calculator to calculate monthly EMI in " +
+    countryText + ".";
+</script>
+
 
 </body>
