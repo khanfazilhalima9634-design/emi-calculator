@@ -1,27 +1,47 @@
 <body>
 
   <h1 id="title"></h1>
-  <p id="intro"></p>
+<p id="intro"></p>
 
- <script>
+<iframe
+  id="calculatorFrame"
+  src=""
+  style="width:100%; height:900px; border:none;">
+</iframe>
+
+
+<script>
   const params = new URLSearchParams(window.location.search);
 
-  const loan = params.get("loan") || "personal-loan";
-  const country = params.get("country") || "usa";
+  const loan = params.get("loan") || "emi";
+  const country = params.get("country") || "global";
 
-  const loanText = loan.replace(/-/g, " ");
-  const countryText = country.replace(/-/g, " ");
+  let file = "emi-calculator.html";
 
-  document.title = loanText + " EMI Calculator in " + countryText;
+  if (loan === "home-loan") {
+    file = "home-loan-emi-calculator.html";
+  } else if (loan === "car-loan") {
+    file = "car-loan-emi-calculator.html";
+  } else if (loan === "global") {
+    file = "global-loan-calculator.html";
+  }
+
+  if (country === "germany") {
+    file = "emi-calculator-germany.html";
+  }
+
+  document.title = loan.replace(/-/g," ") +
+    " EMI Calculator";
 
   document.getElementById("title").innerText =
-    loanText + " EMI Calculator in " + countryText;
+    loan.replace(/-/g," ") + " EMI Calculator";
 
   document.getElementById("intro").innerText =
-    "Use this " + loanText +
-    " EMI calculator to calculate monthly EMI in " +
-    countryText + ".";
+    "Calculate EMI using our advanced calculator.";
+
+  document.getElementById("calculatorFrame").src = file;
 </script>
+
 
 
 </body>
