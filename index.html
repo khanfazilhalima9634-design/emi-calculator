@@ -1,39 +1,42 @@
 <body>
 
-<h1>EMI Calculator</h1>
-<p>Calculate EMI using our advanced calculator.</p>
+<h1 id="title">EMI Calculator</h1>
+<p id="intro">Calculate EMI using our advanced calculator.</p>
 
 <iframe
-  src="https://khanfazilhalima9634-design.github.io/Tools/car-loan-emi-calculator.html"
+  id="calculatorFrame"
+  src=""
   style="width:100%; height:900px; border:none;">
 </iframe>
-
 
 <script>
   const params = new URLSearchParams(window.location.search);
 
-  const loan = params.get("loan") || "emi";
-  const country = params.get("country") || "global";
+  const loan = params.get("loan") || "car-loan";
+  const country = params.get("country") || "";
 
-  let file = "emi-calculator.html";
+  let file =
+    "https://khanfazilhalima9634-design.github.io/Tools/car-loan-emi-calculator.html";
 
   if (loan === "home-loan") {
-    file = "home-loan-emi-calculator.html";
-  } else if (loan === "car-loan") {
-    file = "car-loan-emi-calculator.html";
-  } else if (loan === "global") {
-    file = "global-loan-calculator.html";
+    file =
+      "https://khanfazilhalima9634-design.github.io/Tools/home-loan-emi-calculator.html";
+  }
+
+  if (loan === "global") {
+    file =
+      "https://khanfazilhalima9634-design.github.io/Tools/global-loan-calculator.html";
   }
 
   if (country === "germany") {
-    file = "emi-calculator-germany.html";
+    file =
+      "https://khanfazilhalima9634-design.github.io/Tools/emi-calculator-germany.html";
   }
 
-  document.title = loan.replace(/-/g," ") +
-    " EMI Calculator";
+  document.title = loan.replace(/-/g, " ") + " EMI Calculator";
 
   document.getElementById("title").innerText =
-    loan.replace(/-/g," ") + " EMI Calculator";
+    loan.replace(/-/g, " ") + " EMI Calculator";
 
   document.getElementById("intro").innerText =
     "Calculate EMI using our advanced calculator.";
@@ -41,6 +44,5 @@
   document.getElementById("calculatorFrame").src = file;
 </script>
 
-
-
 </body>
+
